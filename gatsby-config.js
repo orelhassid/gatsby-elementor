@@ -3,6 +3,7 @@ module.exports = {
     title: `Gatsby Default Starter`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
+    siteUrl: "/",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -11,6 +12,21 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: "gatsby-wordpress-theme-phoenix",
+      options: {
+        wordPressUrl: "http://localhost:10022/",
+      },
+    },
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: `WordPress`,
+        fieldName: `WordPress`,
+        url: "http://localhost:10022/graphql",
+        refetchInterval: 60,
       },
     },
     `gatsby-transformer-sharp`,
