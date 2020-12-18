@@ -1,9 +1,12 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
-    siteUrl: "/",
+    siteUrl: "https://orelhassid-gatsby-elementor.netlify.app",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -17,7 +20,7 @@ module.exports = {
     {
       resolve: "gatsby-wordpress-theme-phoenix",
       options: {
-        wordPressUrl: "http://localhost:10022/",
+        wordPressUrl: process.env.GATSBY_WORDPRESS_SITE_URL,
       },
     },
     {
@@ -25,7 +28,7 @@ module.exports = {
       options: {
         typeName: `WordPress`,
         fieldName: `WordPress`,
-        url: "http://localhost:10022/graphql",
+        url: `${GATSBY_WORDPRESS_SITE_URL}/graphql`,
         refetchInterval: 60,
       },
     },
